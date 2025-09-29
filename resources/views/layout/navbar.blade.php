@@ -111,7 +111,6 @@
         }
     </style>
 
-
 <nav class="navbar">
     <a href="#" class="logo">RoleBaseSystem</a>
     <ul class="nav-links">
@@ -119,8 +118,9 @@
         <li><a href="/about">About</a></li>
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Regisration</a></li>
+        
         <li><a href="/logout">Logout</a></li>
-
+        <li><a href="/roles">Roles</a></li>
 
 
         <?php

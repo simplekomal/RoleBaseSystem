@@ -164,6 +164,7 @@
                                 echo "<td style='    display: flex;s
                                 justify-content: center;'>No Authorization</td>";
                                 }
+
                             }
                     }
 
