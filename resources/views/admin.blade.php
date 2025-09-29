@@ -144,11 +144,14 @@
 
                             
                             
-                                if($user->role == 'user' && Auth::user()->role == 'owner' || Auth::user()->role == 'admin' ){
+                                if($user->role == 'user' && Auth::user()->role == 'owner' || Auth::user()->role == 'admin' && $user->role != 'admin'){
                                 echo "<td style='    display: flex;
                                 justify-content: center;'><a href='/admin/users/edit/$user->id'><i class='fa fa-edit'></i></a></td>";
+                            }else if(Auth::user()->role != 'owner'){
+                                     echo "<td style='    display: flex;s
+                                justify-content: center;'>No Authorization</td>";
                             }
-
+                            
                             
                             }
                             else{
