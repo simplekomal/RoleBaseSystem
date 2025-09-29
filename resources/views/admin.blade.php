@@ -110,6 +110,9 @@
                     <th>Role</th>
                     <th>Created At</th>
                       <?php
+
+                    use Illuminate\Support\Facades\Auth;
+
                         if (Auth::user()->role == 'owner' || Auth::user()->role == 'admin') {
                             echo " <th style='    display: flex;
                             justify-content: center;'>Edit</th>";
@@ -132,17 +135,37 @@
 
                     <?php
                     if(Auth::user()->role == 'owner' || Auth::user()->role == 'admin' ){
-                        if($user->role == 'admin' || $user->role == 'user'){
+                        if($user->role == 'user' || $user->role == 'admin' ){
                             
-                            echo "<td style='    display: flex;
-                            justify-content: center;'><a href='/admin/users/edit/$user->id'><i class='fa fa-edit'></i></a></td>";
+                            if($user->role == 'admin' && Auth::user()->role == 'owner'){
+                                echo "<td style='    display: flex;
+                                justify-content: center;'><a href='/admin/users/edit/$user->id'><i class='fa fa-edit'></i></a></td>";
+                            }
+
+                            
+                            
+                                if($user->role == 'user' && Auth::user()->role == 'owner' || Auth::user()->role == 'admin' ){
+                                echo "<td style='    display: flex;
+                                justify-content: center;'><a href='/admin/users/edit/$user->id'><i class='fa fa-edit'></i></a></td>";
+                            }
+
+                            
                             }
                             else{
+
+                                    if( Auth::user()->role == 'owner'){
                                 echo "<td style='    display: flex;
+                                justify-content: center;'><a href='/admin/users/edit/$user->id'><i class='fa fa-edit'></i></a></td>";
+                            }else{
+
+                                echo "<td style='    display: flex;s
                                 justify-content: center;'>No Authorization</td>";
+                                }
                             }
                     }
-                    
+
+
+                
                     ?>  
                     </tr>
                     <?php

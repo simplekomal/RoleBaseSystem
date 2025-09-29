@@ -26,7 +26,9 @@ class AdminController extends Controller
 
         public function edit($id)
         {
-            $user = User::find($id)->first();
+            // dd($id);
+            $user = User::where('id','=',$id)->first();
+
 
             return view('edit', compact('user'));
         }
