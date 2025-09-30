@@ -160,7 +160,7 @@
                 <td class="{{ $role->can_read ? 'yes' : 'no' }}">{{ $role->can_read ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_update ? 'yes' : 'no' }}">{{ $role->can_update ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_delete ? 'yes' : 'no' }}">{{ $role->can_delete ? 'Yes' : 'No' }}</td>
-                <td class="{{ $role->canShowRoleOptions ? 'yes' : 'no' }}">{{ $role->can_export ? 'Yes' : 'No' }}</td>
+                <td class="{{ $role->canShowRoleOptions ? 'yes' : 'no' }}">{{ $role->canShowRoleOptions ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->allowRoleAssigne ? 'yes' : 'no' }}">{{ $role->allowRoleAssigne ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('roles.edit', $role->id) }}" class="btn-edit">✏️ Edit</a>

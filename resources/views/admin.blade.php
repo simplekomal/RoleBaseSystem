@@ -145,10 +145,10 @@
             
          @foreach($users as $index => $user)
 <tr>
-    <td>{{ $index + 1 }}</td> <!-- auto-increment index -->
+    <td>{{ $index + 1 }}</td> 
     <td>{{ $user->name }}</td>
     <td>{{ $user->email }}</td>
-    <td>{{ ucfirst($user->role_name) }}</td> <!-- role_name from join -->
+    <td>{{ ucfirst($user->role_name) }}</td> 
     <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d M Y, H:i') }}</td>
 
     <td style="display: flex; justify-content: center;">
