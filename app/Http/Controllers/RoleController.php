@@ -31,7 +31,7 @@ class RoleController extends Controller
             'can_update' => $request->has('can_update'),
             'can_delete' => $request->has('can_delete'),
             'canShowRoleOptions' => $request->has('canShowRoleOptions'),
-            'can_approve' => $request->has('can_approve'),
+            'allowRoleAssigne' => $request->has('allowRoleAssigne'),
         ]);
 
         return redirect()->route('roles.index')->with('success', 'Role created successfully!');
@@ -58,7 +58,7 @@ public function update(Request $request, Role $role)
         'can_update' => $request->has('can_update'),
         'can_delete' => $request->has('can_delete'),
         'canShowRoleOptions' => $request->has('canShowRoleOptions'),
-        'can_approve' => $request->has('can_approve'),
+        'allowRoleAssigne' => $request->has('allowRoleAssigne'),
     ]);
 
     if($request->has('canShowRoleOptions') == false){

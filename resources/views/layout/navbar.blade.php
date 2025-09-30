@@ -123,7 +123,7 @@
 
         @can('canShowRoleOptions')
         <li><a href="/roles">Roles</a></li>
-
+            
         @endcan
 
 <li><a href="/admin/users">Employees</a></li>

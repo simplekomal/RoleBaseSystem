@@ -16,10 +16,10 @@ class UsersTableSeeder extends Seeder
     {
         // Admin user
         DB::table('users')->insert([
-            'name' => 'Owner User',
+            'name' => 'Owner',
             'email' => 'owner@gmail.com',
             'password' => Hash::make('pass12345'), // hashed password
-            'role' => 'owner',
+            'role' => '1',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

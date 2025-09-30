@@ -16,7 +16,7 @@ class Role extends Model
         'can_update',
         'can_delete',
         'canShowRoleOptions',
-        'can_approve',
+        'allowRoleAssigne',
 
     ];
 }

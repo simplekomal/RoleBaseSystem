@@ -148,7 +148,7 @@
                 <th>Update</th>
                 <th>Delete</th>
                 <th>Role Btn</th>
-                <th>Approve</th>
+                <th>allowRoleAssigne</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -161,7 +161,7 @@
                 <td class="{{ $role->can_update ? 'yes' : 'no' }}">{{ $role->can_update ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_delete ? 'yes' : 'no' }}">{{ $role->can_delete ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->canShowRoleOptions ? 'yes' : 'no' }}">{{ $role->can_export ? 'Yes' : 'No' }}</td>
-                <td class="{{ $role->can_approve ? 'yes' : 'no' }}">{{ $role->can_approve ? 'Yes' : 'No' }}</td>
+                <td class="{{ $role->allowRoleAssigne ? 'yes' : 'no' }}">{{ $role->allowRoleAssigne ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('roles.edit', $role->id) }}" class="btn-edit">✏️ Edit</a>
 

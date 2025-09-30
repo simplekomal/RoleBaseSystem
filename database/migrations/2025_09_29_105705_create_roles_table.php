@@ -16,7 +16,7 @@ return new class extends Migration
             $table->boolean('can_update')->default(false);
             $table->boolean('can_delete')->default(false);
             $table->boolean('canShowRoleOptions')->default(false);
-            $table->boolean('can_approve')->default(false);
+            $table->boolean('allowRoleAssigne')->default(false);
             $table->timestamps();
         });
     }

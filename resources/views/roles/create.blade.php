@@ -138,7 +138,7 @@
             <label><input type="checkbox" name="can_update"> Update</label>
             <label><input type="checkbox" name="can_delete"> Delete</label>
             <label><input type="checkbox" name="canShowRoleOptions"> canShowRoleOptions</label>
-            <label><input type="checkbox" name="can_approve"> Approve</label>
+            <label><input type="checkbox" name="allowRoleAssigne"> allowRoleAssigne</label>
         </div>
 
         <button type="submit">✅ Create Role</button>

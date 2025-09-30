@@ -186,13 +186,17 @@
             </div>
 
             {{-- Role --}}
-            <div>
+                <div>
                 <label for="role" class="form-label">Role</label>
                 <select name="role" id="role" class="form-control" required>
-                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" {{ $user->role == $role->id ? 'selected' : '' }}>
+                            {{ ucfirst($role->name) }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
+
 
             {{-- Password --}}
             <div>

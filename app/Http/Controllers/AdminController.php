@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -17,13 +18,17 @@ class AdminController extends Controller
         if(Auth::check() == false){
             return redirect('/login');
         }
+        $roles = Role::where('name', Auth::user()->role)->first();
 
 
-                $users = User::all(); // fetch all users
-                 $roles = Role::where('name', Auth::user()->role)->first();
-                 
+                // $users = User::all(); // fetch all users
+$users = DB::table('users as u')
+    ->join('roles as r', 'u.role', '=', 'r.id')
+    ->select('u.*', 'r.name as role_name')
+    ->get();
+
+
                 return view('admin', compact('users', 'roles'));
-
 
     }
 
@@ -32,33 +37,35 @@ class AdminController extends Controller
         {
             // dd($id);
             $user = User::where('id','=',$id)->first();
+            $roles = Role::all();
 
-
-            return view('edit', compact('user'));
+            return view('edit', compact('user','roles'));
         }
         
 
         // Show Add User form
     public function create()
     {
-        if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'owner'])) {
-            abort(403, "Unauthorized");
-        }
 
-        return view('create');
+    $roles = Role::all(); // fetch all roles from the database
+        return view('create', compact('roles'));
     }
 
     // Store new user
     public function store(Request $request)
     {
-        if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'owner'])) {
-            abort(403, "Unauthorized");
-        }
+
+            if (!$request->has('role')) {
+                $userRole = Role::where('name', 'user')->first(); 
+                if ($userRole) {
+                    $request->merge(['role' => $userRole->id]); 
+                }
+            }
 
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'role' => 'required|in:user,admin',
+            'role'=>'required',
             'password' => 'required|min:6|confirmed',
         ]);
 

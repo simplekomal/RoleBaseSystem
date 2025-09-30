@@ -117,7 +117,7 @@
             <label><input type="checkbox" name="can_update" {{ $role->can_update ? 'checked' : '' }}> Update</label>
             <label><input type="checkbox" name="can_delete" {{ $role->can_delete ? 'checked' : '' }}> Delete</label>
             <label><input type="checkbox" name="canShowRoleOptions" {{ $role->canShowRoleOptions ? 'checked' : '' }}> canShowRoleOptions</label>
-            <label><input type="checkbox" name="can_approve" {{ $role->can_approve ? 'checked' : '' }}> Approve</label>
+            <label><input type="checkbox" name="allowRoleAssigne" {{ $role->allowRoleAssigne ? 'checked' : '' }}> allowRoleAssigne</label>
         </div>
 
         <button type="submit" class="btn-submit">Update Role</button>

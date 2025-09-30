@@ -122,6 +122,7 @@
                 <a href="{{ route('admin.create') }}" class="btn-add-user">
                     <i class="fa fa-plus"></i> Add User
                 </a>
+                
             @endcan
 
 
@@ -141,46 +142,36 @@
         </thead>
         <tbody>
             <?php $id = 1; ?>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{ $id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td class="{{ $user->role === 'admin' ? 'role-admin' : 'role-user' }}">{{ ucfirst($user->role) }}</td>
-                    <td>{{ $user->created_at->format('d M Y, H:i') }}</td>
+            
+         @foreach($users as $index => $user)
+<tr>
+    <td>{{ $index + 1 }}</td> <!-- auto-increment index -->
+    <td>{{ $user->name }}</td>
+    <td>{{ $user->email }}</td>
+    <td>{{ ucfirst($user->role_name) }}</td> <!-- role_name from join -->
+    <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d M Y, H:i') }}</td>
 
-                    <td style="display: flex; justify-content: center;">
-                        @can('canUpdateUser')
-                                <a href="{{ url('/admin/users/edit/' . $user->id) }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
+    <td style="display: flex; justify-content: center;">
+        @can('canUpdateUser')
+            <a href="{{ url('/admin/users/edit/' . $user->id) }}">
+                <i class="fa fa-edit"></i>
+            </a>
+        @endcan
 
+        @can('canDeleteUser')
+            <a style="margin-left: 20px;" href="{{ url('/admin/users/delete/' . $user->id) }}"
+               onclick="return confirm('Are you sure you want to delete this user?')">
+                <i class="fa fa-trash"></i>
+            </a>
+        @endcan
 
-                                 @can('canDeleteUser')
-                                <a style="margin-left: 20px;" href="{{ url('/admin/users/delete/' . $user->id) }}" onclick="return confirm('Are you sure you want to delete this user?')">
-        <i class="fa fa-trash"></i>
-    </a>
+        @if(!auth()->user()->can('canUpdateUser') && !auth()->user()->can('canDeleteUser'))
+            <span style="margin-left: 10px;">No Authorized</span>
+        @endif
+    </td>
+</tr>
+@endforeach
 
-                                @endcan
-                                @else
-                                
-                                
-                                @can('canDeleteUser')
-    <a style="margin-left: 20px;" href="{{ url('/admin/users/delete/' . $user->id) }}" onclick="return confirm('Are you sure you want to delete this user?')">
-        <i class="fa fa-trash"></i>
-    </a>
-                                @else
-                 
-                                    No Authorized
-                      
-                                @endcan
-                                
-                                @endcan
-                            </td>
-
-                </tr>
-                <?php $id++; ?>
-            @endforeach
         </tbody>
     </table>
 </div>

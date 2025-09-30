@@ -149,11 +149,22 @@
             </div>
 
             <div>
+                
+                @can('allowRoleAssigne')
                 <label for="role">Role</label>
                 <select name="role" id="role" class="form-control" required>
-                    <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
-                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" 
+                            {{ old('role') == $role->name ? 'selected' : '' }}>
+                            {{ ucfirst($role->name) }}
+                        </option>
+                    @endforeach
                 </select>
+
+
+            
+
+                @endcan
             </div>
 
             <div>

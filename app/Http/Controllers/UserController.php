@@ -12,10 +12,11 @@ class UserController extends Controller
     // Update user
      public function update(Request $request, $id)
     {
+
+      
         $user = User::findOrFail($id);
 
-        // Only admin/owner can change roles
-        $canChangeRole = in_array(Auth::user()->role, ['owner']);
+ 
 
         // Prepare dynamic validation rules
         $rules = [];
@@ -29,6 +30,11 @@ class UserController extends Controller
         if ($request->filled('password')) {
             $rules['password'] = 'sometimes|min:6|confirmed';
         }
+
+           if ($request->has('role')) {
+            $rules['role'] = 'sometimes';
+        }
+
 
         $validated = $request->validate($rules);
 
