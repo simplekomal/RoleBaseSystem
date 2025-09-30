@@ -116,7 +116,7 @@
             <label><input type="checkbox" name="can_read" {{ $role->can_read ? 'checked' : '' }}> Read</label>
             <label><input type="checkbox" name="can_update" {{ $role->can_update ? 'checked' : '' }}> Update</label>
             <label><input type="checkbox" name="can_delete" {{ $role->can_delete ? 'checked' : '' }}> Delete</label>
-            <label><input type="checkbox" name="can_export" {{ $role->can_export ? 'checked' : '' }}> Export</label>
+            <label><input type="checkbox" name="canShowRoleOptions" {{ $role->canShowRoleOptions ? 'checked' : '' }}> canShowRoleOptions</label>
             <label><input type="checkbox" name="can_approve" {{ $role->can_approve ? 'checked' : '' }}> Approve</label>
         </div>
 

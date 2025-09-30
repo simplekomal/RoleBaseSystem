@@ -8,7 +8,7 @@
     }
 
     .container {
-        max-width: 1000px;
+        max-width: 1100px;
         margin: 40px auto;
         background: #fff;
         padding: 30px 40px;
@@ -147,7 +147,7 @@
                 <th>Read</th>
                 <th>Update</th>
                 <th>Delete</th>
-                <th>Export</th>
+                <th>Role Btn</th>
                 <th>Approve</th>
                 <th>Actions</th>
             </tr>
@@ -160,7 +160,7 @@
                 <td class="{{ $role->can_read ? 'yes' : 'no' }}">{{ $role->can_read ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_update ? 'yes' : 'no' }}">{{ $role->can_update ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_delete ? 'yes' : 'no' }}">{{ $role->can_delete ? 'Yes' : 'No' }}</td>
-                <td class="{{ $role->can_export ? 'yes' : 'no' }}">{{ $role->can_export ? 'Yes' : 'No' }}</td>
+                <td class="{{ $role->canShowRoleOptions ? 'yes' : 'no' }}">{{ $role->can_export ? 'Yes' : 'No' }}</td>
                 <td class="{{ $role->can_approve ? 'yes' : 'no' }}">{{ $role->can_approve ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('roles.edit', $role->id) }}" class="btn-edit">✏️ Edit</a>

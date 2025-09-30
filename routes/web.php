@@ -6,9 +6,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CanCreateUser;
 use App\Http\Middleware\CheckUserLogin;
-
-
+use GuzzleHttp\Middleware;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
@@ -44,9 +44,23 @@ Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('admin.
 
 
 
+Route::middleware('can:canShowRoleOptions')->group(function () {
 Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
 Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
 Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
 Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
 Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
+});
+
+
+
+ // Add User
+ Route::get('/admin/users/create', [AdminController::class, 'create'])->name('admin.create')->middleware('can:canCreateUser');
+    Route::post('/admin/users/store', [AdminController::class, 'store'])->name('admin.store');
+
+
+    Route::get('/admin/users/delete/{id}', [AdminController::class, 'destroy'])
+    ->name('admin.users.delete')
+    ->middleware('can:canDeleteUser');

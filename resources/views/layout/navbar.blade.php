@@ -120,15 +120,15 @@
         <li><a href="/register">Regisration</a></li>
         
         <li><a href="/logout">Logout</a></li>
+
+        @can('canShowRoleOptions')
         <li><a href="/roles">Roles</a></li>
 
+        @endcan
 
-        <?php
-        
-            if (auth()->user()->role == "admin" || auth()->user()->role == "owner") {
-                echo '<li><a href="/admin/users">Admin</a></li>';
-            }
-    ?>
+<li><a href="/admin/users">Employees</a></li>
+
+
 
 
     </ul>

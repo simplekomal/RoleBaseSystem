@@ -123,12 +123,10 @@
         }
     }
 
-    input{
+    input, select {
         margin-bottom: 15px;
         margin-top: 5px;
     }
-
-
 </style>
 
 <div class="full-screen-container">
@@ -139,7 +137,7 @@
 
         {{-- Success Message --}}
         @if(session('success'))
-            <div   style="text-align: center;"  class="alert alert-success alert-dismissible fade show" role="alert">
+            <div style="text-align: center;" class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -161,6 +159,7 @@
             @csrf
             @method('PUT')
 
+            {{-- Name --}}
             <div>
                 <label for="name" class="form-label">Name</label>
                 <input 
@@ -173,6 +172,7 @@
                     required>
             </div>
 
+            {{-- Email --}}
             <div>
                 <label for="email" class="form-label">Email</label>
                 <input 
@@ -185,6 +185,38 @@
                     required>
             </div>
 
+            {{-- Role --}}
+            <div>
+                <label for="role" class="form-label">Role</label>
+                <select name="role" id="role" class="form-control" required>
+                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                </select>
+            </div>
+
+            {{-- Password --}}
+            <div>
+                <label for="password" class="form-label">Password (Leave blank to keep current)</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password"
+                    class="form-control" 
+                    placeholder="Enter new password">
+            </div>
+
+            {{-- Confirm Password --}}
+            <div>
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input 
+                    type="password" 
+                    name="password_confirmation" 
+                    id="password_confirmation"
+                    class="form-control" 
+                    placeholder="Confirm new password">
+            </div>
+
+            {{-- Buttons --}}
             <div class="button-group">
                 <button type="submit" class="btn btn-custom btn-update">
                     Update

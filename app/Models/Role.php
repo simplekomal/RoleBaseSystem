@@ -15,7 +15,8 @@ class Role extends Model
         'can_read',
         'can_update',
         'can_delete',
-        'can_export',
-        'can_approve'
+        'canShowRoleOptions',
+        'can_approve',
+
     ];
 }

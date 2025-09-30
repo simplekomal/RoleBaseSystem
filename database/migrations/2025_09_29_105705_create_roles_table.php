@@ -15,7 +15,7 @@ return new class extends Migration
             $table->boolean('can_read')->default(true);
             $table->boolean('can_update')->default(false);
             $table->boolean('can_delete')->default(false);
-            $table->boolean('can_export')->default(false);
+            $table->boolean('canShowRoleOptions')->default(false);
             $table->boolean('can_approve')->default(false);
             $table->timestamps();
         });

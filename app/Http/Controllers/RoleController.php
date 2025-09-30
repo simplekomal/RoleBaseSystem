@@ -30,7 +30,7 @@ class RoleController extends Controller
             'can_read' => $request->has('can_read'),
             'can_update' => $request->has('can_update'),
             'can_delete' => $request->has('can_delete'),
-            'can_export' => $request->has('can_export'),
+            'canShowRoleOptions' => $request->has('canShowRoleOptions'),
             'can_approve' => $request->has('can_approve'),
         ]);
 
@@ -46,6 +46,7 @@ public function edit(Role $role)
 // Update Role
 public function update(Request $request, Role $role)
 {
+
     $request->validate([
         'name' => 'required|unique:roles,name,' . $role->id,
     ]);
@@ -56,9 +57,14 @@ public function update(Request $request, Role $role)
         'can_read' => $request->has('can_read'),
         'can_update' => $request->has('can_update'),
         'can_delete' => $request->has('can_delete'),
-        'can_export' => $request->has('can_export'),
+        'canShowRoleOptions' => $request->has('canShowRoleOptions'),
         'can_approve' => $request->has('can_approve'),
     ]);
+
+    if($request->has('canShowRoleOptions') == false){
+        return redirect('/home');
+    }
+
 
     return redirect()->route('roles.index')->with('success', 'Role updated successfully!');
 }
