@@ -111,24 +111,24 @@
         }
     </style>
 
-
 <nav class="navbar">
     <a href="#" class="logo">RoleBaseSystem</a>
     <ul class="nav-links">
         <li><a href="/home">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Regisration</a></li>
+        
+        
+        @can('canShowRoleOptions')
+        <li><a href="/roles">Roles</a></li>
+        
+        @endcan
+        
+        <li><a href="/admin/users">Employees</a></li>
+        
+        <li><a href="/profile">Profile</a></li>
+
         <li><a href="/logout">Logout</a></li>
 
-
-
-        <?php
-        
-            if (auth()->user()->role == "admin" || auth()->user()->role == "owner") {
-                echo '<li><a href="/admin/users">Admin</a></li>';
-            }
-    ?>
 
 
     </ul>
