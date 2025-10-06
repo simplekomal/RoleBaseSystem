@@ -2,7 +2,7 @@
 
 @section('mainContent')
 <style>
-try to create the conflict
+/* try to create the conflict */
     body, html {
         height: 85%;
         margin: 0;
